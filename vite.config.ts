@@ -6,7 +6,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: process.env.GITHUB_PAGES ? '/your-repo-name/' : '/',
+  // Pastikan untuk mengganti 'imo-mantap' dengan nama repository GitHub Anda yang sebenarnya
+  base: process.env.GITHUB_PAGES ? '/imo-mantap/' : '/',
   server: {
     host: "::",
     port: 8080,
