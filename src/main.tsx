@@ -5,9 +5,12 @@ import App from './App.tsx';
 import './index.css';
 
 // Explicitly use React to ensure it's included in the bundle
-const root = createRoot(document.getElementById("root")!);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const rootElement = document.getElementById("root");
+if (rootElement) {
+  const root = createRoot(rootElement);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+}
