@@ -6,9 +6,81 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Heart } from 'lucide-react';
+import { Heart, Info } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import { useToast } from "@/components/ui/use-toast";
+import { Separator } from "@/components/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+const HealthInfo = () => {
+  return (
+    <Card className="mt-8 w-full max-w-4xl mx-auto">
+      <CardHeader>
+        <div className="flex items-center">
+          <Info className="h-5 w-5 mr-2 text-healthcare-blue" />
+          <CardTitle className="text-xl">Informasi Kesehatan</CardTitle>
+        </div>
+        <CardDescription>Informasi dan tips kesehatan terbaru</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Tabs defaultValue="umum">
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="umum">Informasi Umum</TabsTrigger>
+            <TabsTrigger value="hipertensi">Hipertensi</TabsTrigger>
+            <TabsTrigger value="tips">Tips Sehat</TabsTrigger>
+          </TabsList>
+          <TabsContent value="umum" className="mt-4">
+            <div className="space-y-4">
+              <h3 className="font-medium">Program Kesehatan Nasional</h3>
+              <p className="text-sm text-muted-foreground">
+                Kementerian Kesehatan Republik Indonesia mengajak seluruh masyarakat untuk hidup sehat melalui GERMAS (Gerakan Masyarakat Hidup Sehat) dengan melakukan aktivitas fisik, mengonsumsi sayur dan buah, dan memeriksakan kesehatan secara rutin.
+              </p>
+              <Separator />
+              <h3 className="font-medium">Vaksinasi Covid-19</h3>
+              <p className="text-sm text-muted-foreground">
+                Vaksinasi Covid-19 tetap penting untuk dilakukan, termasuk dosis booster untuk meningkatkan kekebalan tubuh. Kunjungi fasilitas kesehatan terdekat untuk informasi lebih lanjut.
+              </p>
+            </div>
+          </TabsContent>
+          <TabsContent value="hipertensi" className="mt-4">
+            <div className="space-y-4">
+              <h3 className="font-medium">Kenali Hipertensi</h3>
+              <p className="text-sm text-muted-foreground">
+                Hipertensi atau tekanan darah tinggi adalah kondisi ketika tekanan darah terhadap dinding arteri terlalu tinggi. Tekanan darah normal adalah di bawah 120/80 mmHg. Tekanan darah antara 120/80 hingga 139/89 mmHg adalah prehipertensi.
+              </p>
+              <Separator />
+              <h3 className="font-medium">Faktor Risiko Hipertensi</h3>
+              <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+                <li>Usia lanjut</li>
+                <li>Riwayat keluarga</li>
+                <li>Kelebihan berat badan</li>
+                <li>Kurang aktif bergerak</li>
+                <li>Konsumsi garam berlebih</li>
+                <li>Konsumsi alkohol</li>
+                <li>Stres</li>
+              </ul>
+            </div>
+          </TabsContent>
+          <TabsContent value="tips" className="mt-4">
+            <div className="space-y-4">
+              <h3 className="font-medium">Tips Mengelola Hipertensi</h3>
+              <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+                <li>Konsumsi obat secara teratur sesuai anjuran dokter</li>
+                <li>Kurangi konsumsi garam (tidak lebih dari 1 sendok teh per hari)</li>
+                <li>Perbanyak konsumsi buah, sayur, dan makanan rendah lemak</li>
+                <li>Lakukan aktivitas fisik secara rutin (30 menit per hari, 5 kali seminggu)</li>
+                <li>Pertahankan berat badan ideal</li>
+                <li>Kurangi stres</li>
+                <li>Hindari konsumsi alkohol dan rokok</li>
+                <li>Periksa tekanan darah secara teratur</li>
+              </ul>
+            </div>
+          </TabsContent>
+        </Tabs>
+      </CardContent>
+    </Card>
+  );
+};
 
 const Login: React.FC = () => {
   const { login } = useAuth();
@@ -25,7 +97,7 @@ const Login: React.FC = () => {
       await login(email, password);
       toast({
         title: "Login berhasil!",
-        description: "Selamat datang kembali di HealthMinder",
+        description: "Selamat datang kembali di IMO Mantap",
       });
     } catch (error) {
       toast({
@@ -40,15 +112,15 @@ const Login: React.FC = () => {
 
   return (
     <Layout requireAuth={false}>
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen flex flex-col items-center justify-start bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
         <Card className="w-full max-w-md animate-fade-in">
           <CardHeader className="space-y-1 flex flex-col items-center">
             <div className="w-12 h-12 rounded-full bg-healthcare-blue flex items-center justify-center mb-4">
               <Heart className="h-6 w-6 text-white" />
             </div>
-            <CardTitle className="text-2xl font-bold text-center">HealthMinder</CardTitle>
+            <CardTitle className="text-2xl font-bold text-center">IMO Mantap</CardTitle>
             <CardDescription className="text-center">
-              Masuk untuk mengakses akun Anda
+              Ingat Minum Obat - Masuk untuk mengakses akun Anda
             </CardDescription>
           </CardHeader>
           
@@ -112,6 +184,8 @@ const Login: React.FC = () => {
             </p>
           </CardFooter>
         </Card>
+        
+        <HealthInfo />
       </div>
     </Layout>
   );

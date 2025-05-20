@@ -53,7 +53,7 @@ const Sidebar: React.FC = () => {
           <div className="w-8 h-8 rounded-full bg-healthcare-blue flex items-center justify-center">
             <Heart className="h-4 w-4 text-white" />
           </div>
-          <span className="font-bold text-xl text-healthcare-blue">HealthMinder</span>
+          <span className="font-bold text-xl text-healthcare-blue">IMO Mantap</span>
         </Link>
       </div>
       

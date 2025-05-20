@@ -30,7 +30,7 @@ const Header: React.FC = () => {
       
       <div className="flex-1 md:text-center md:flex-none">
         <h1 className="text-xl font-semibold text-healthcare-blue hidden md:inline">
-          HealthMinder
+          IMO Mantap
         </h1>
       </div>
 
